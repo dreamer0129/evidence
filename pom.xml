@@ -51,6 +51,26 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- PDF 操作库 -->
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>3.0.5</version>
+		</dependency>
+
+		<!-- 图片处理 -->
+		<dependency>
+			<groupId>org.imgscalr</groupId>
+			<artifactId>imgscalr-lib</artifactId>
+			<version>4.2</version>
+		</dependency>
+
+		<!-- 智能合约 -->
+		<dependency>
+			<groupId>org.web3j</groupId>
+			<artifactId>core</artifactId>
+			<version>4.14.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -83,6 +103,25 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.web3j</groupId>
+				<artifactId>web3j-maven-plugin</artifactId>
+				<version>4.14.0</version>
+				<configuration>
+					<packageName>cn.edu.gfkd.evidence.generated</packageName>
+					<sourceDestination>src/main/java</sourceDestination>
+					<nativeJavaType>true</nativeJavaType>
+					<outputFormat>java</outputFormat>
+					<soliditySourceFiles>
+						<directory>src/main/contract/evidence/packages/hardhat/contracts</directory>
+						<includes>
+							<include>**/*.sol</include>
+						</includes>
+					</soliditySourceFiles>
+
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
