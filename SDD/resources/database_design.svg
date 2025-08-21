@@ -1,0 +1,68 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="600" fill="#f9f9f9"/>
+  
+  <!-- 标题 -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">区块链存证系统数据库设计</text>
+  
+  <!-- 用户表 -->
+  <rect x="100" y="80" width="200" height="120" rx="5" fill="#42A5F5" stroke="#2196F3" stroke-width="2"/>
+  <text x="200" y="105" font-family="Arial" font-size="16" text-anchor="middle" fill="white" font-weight="bold">用户表 (user)</text>
+  <text x="110" y="130" font-family="Arial" font-size="12" fill="white">- id: BIGINT (PK)</text>
+  <text x="110" y="155" font-family="Arial" font-size="12" fill="white">- username: VARCHAR(50)</text>
+  <text x="110" y="180" font-family="Arial" font-size="12" fill="white">- password: VARCHAR(100)</text>
+  <text x="110" y="205" font-family="Arial" font-size="12" fill="white">- email: VARCHAR(100)</text>
+  <text x="110" y="230" font-family="Arial" font-size="12" fill="white">- role: VARCHAR(20)</text>
+  
+  <!-- 存证记录表 -->
+  <rect x="450" y="80" width="250" height="150" rx="5" fill="#66BB6A" stroke="#4CAF50" stroke-width="2"/>
+  <text x="575" y="105" font-family="Arial" font-size="16" text-anchor="middle" fill="white" font-weight="bold">存证记录表 (evidence)</text>
+  <text x="460" y="130" font-family="Arial" font-size="12" fill="white">- id: BIGINT (PK)</text>
+  <text x="460" y="155" font-family="Arial" font-size="12" fill="white">- user_id: BIGINT (FK)</text>
+  <text x="460" y="180" font-family="Arial" font-size="12" fill="white">- file_name: VARCHAR(255)</text>
+  <text x="460" y="205" font-family="Arial" font-size="12" fill="white">- file_size: BIGINT</text>
+  <text x="460" y="230" font-family="Arial" font-size="12" fill="white">- file_type: VARCHAR(50)</text>
+  <text x="460" y="255" font-family="Arial" font-size="12" fill="white">- hash_value: VARCHAR(255)</text>
+  <text x="460" y="280" font-family="Arial" font-size="12" fill="white">- hash_algorithm: VARCHAR(20)</text>
+  <text x="460" y="305" font-family="Arial" font-size="12" fill="white">- timestamp: DATETIME</text>
+  
+  <!-- 存证证明表 -->
+  <rect x="100" y="350" width="250" height="150" rx="5" fill="#FFA726" stroke="#FF9800" stroke-width="2"/>
+  <text x="225" y="375" font-family="Arial" font-size="16" text-anchor="middle" fill="white" font-weight="bold">存证证明表 (certificate)</text>
+  <text x="110" y="400" font-family="Arial" font-size="12" fill="white">- id: BIGINT (PK)</text>
+  <text x="110" y="425" font-family="Arial" font-size="12" fill="white">- evidence_id: BIGINT (FK)</text>
+  <text x="110" y="450" font-family="Arial" font-size="12" fill="white">- certificate_number: VARCHAR(100)</text>
+  <text x="110" y="475" font-family="Arial" font-size="12" fill="white">- blockchain_tx_id: VARCHAR(255)</text>
+  <text x="110" y="500" font-family="Arial" font-size="12" fill="white">- signature: TEXT</text>
+  <text x="110" y="525" font-family="Arial" font-size="12" fill="white">- issued_date: DATETIME</text>
+  
+  <!-- 验证记录表 -->
+  <rect x="450" y="350" width="250" height="150" rx="5" fill="#AB47BC" stroke="#9C27B0" stroke-width="2"/>
+  <text x="575" y="375" font-family="Arial" font-size="16" text-anchor="middle" fill="white" font-weight="bold">验证记录表 (verification)</text>
+  <text x="460" y="400" font-family="Arial" font-size="12" fill="white">- id: BIGINT (PK)</text>
+  <text x="460" y="425" font-family="Arial" font-size="12" fill="white">- evidence_id: BIGINT (FK)</text>
+  <text x="460" y="450" font-family="Arial" font-size="12" fill="white">- verifier_id: BIGINT (FK)</text>
+  <text x="460" y="475" font-family="Arial" font-size="12" fill="white">- verification_method: VARCHAR(50)</text>
+  <text x="460" y="500" font-family="Arial" font-size="12" fill="white">- result: VARCHAR(20)</text>
+  <text x="460" y="525" font-family="Arial" font-size="12" fill="white">- timestamp: DATETIME</text>
+  
+  <!-- 关系线 -->
+  <path d="M300 140 L450 140" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="375" y="135" font-family="Arial" font-size="12" text-anchor="middle">1:N</text>
+  
+  <path d="M300 425 L450 425" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="375" y="420" font-family="Arial" font-size="12" text-anchor="middle">1:N</text>
+  
+  <path d="M575 230 L575 350" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="590" y="290" font-family="Arial" font-size="12" text-anchor="middle" transform="rotate(90, 590, 290)">1:N</text>
+  
+  <path d="M225 140 L225 230 L300 230 L300 260 L225 260 L225 350" stroke="#666" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="180" y="260" font-family="Arial" font-size="12" text-anchor="middle" transform="rotate(-45, 180, 260)">1:N (可选)</text>
+  
+  <!-- 箭头标记 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

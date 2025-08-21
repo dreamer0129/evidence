@@ -1,0 +1,52 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="600" fill="#f9f9f9"/>
+  
+  <!-- 标题 -->
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">区块链存证系统架构图</text>
+  
+  <!-- 前端层 -->
+  <rect x="250" y="80" width="300" height="60" rx="5" fill="#4CAF50"/>
+  <text x="400" y="115" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">前端层</text>
+  <text x="400" y="135" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Web界面 / 移动端H5</text>
+  
+  <!-- 后端层 -->
+  <rect x="250" y="180" width="300" height="60" rx="5" fill="#2196F3"/>
+  <text x="400" y="215" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">后端层</text>
+  <text x="400" y="235" font-family="Arial" font-size="14" text-anchor="middle" fill="white">API服务 / 业务逻辑处理</text>
+  
+  <!-- 区块链层 -->
+  <rect x="250" y="280" width="300" height="60" rx="5" fill="#9C27B0"/>
+  <text x="400" y="315" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">区块链层</text>
+  <text x="400" y="335" font-family="Arial" font-size="14" text-anchor="middle" fill="white">智能合约 / 节点交互</text>
+  
+  <!-- 存储层 -->
+  <rect x="250" y="380" width="300" height="60" rx="5" fill="#FF9800"/>
+  <text x="400" y="415" font-family="Arial" font-size="18" text-anchor="middle" fill="white" font-weight="bold">存储层</text>
+  <text x="400" y="435" font-family="Arial" font-size="14" text-anchor="middle" fill="white">文件存储 / 数据库</text>
+  
+  <!-- 连接箭头 -->
+  <line x1="400" y1="140" x2="400" y2="180" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="400" y1="240" x2="400" y2="280" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="400" y1="340" x2="400" y2="380" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- 箭头标记 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <!-- 技术栈标签 -->
+  <rect x="600" y="100" width="150" height="40" rx="5" fill="#E0E0E0"/>
+  <text x="675" y="125" font-family="Arial" font-size="14" text-anchor="middle">前端: React/Vue</text>
+  
+  <rect x="600" y="190" width="150" height="40" rx="5" fill="#E0E0E0"/>
+  <text x="675" y="215" font-family="Arial" font-size="14" text-anchor="middle">后端: Spring Boot</text>
+  
+  <rect x="600" y="290" width="150" height="40" rx="5" fill="#E0E0E0"/>
+  <text x="675" y="315" font-family="Arial" font-size="14" text-anchor="middle">区块链: 以太坊/联盟链</text>
+  
+  <rect x="600" y="400" width="150" height="40" rx="5" fill="#E0E0E0"/>
+  <text x="675" y="425" font-family="Arial" font-size="14" text-anchor="middle">存储: IPFS/云存储</text>
+</svg>
