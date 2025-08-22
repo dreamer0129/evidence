@@ -43,7 +43,7 @@ api.interceptors.response.use(
  */
 export const loginUser = async (username: string, password: string) => {
   try {
-    const response = await api.post("/auth/login", {
+    const response = await api.post("/users/login", {
       username,
       password,
     });
@@ -63,7 +63,7 @@ export const loginUser = async (username: string, password: string) => {
  */
 export const registerUser = async (username: string, password: string, email: string) => {
   try {
-    const response = await api.post("/auth/register", {
+    const response = await api.post("/users/register", {
       username,
       password,
       email,

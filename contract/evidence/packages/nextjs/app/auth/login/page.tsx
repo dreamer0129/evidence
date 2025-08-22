@@ -4,8 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 // 请先确保已安装 antd 依赖，可通过以下命令安装：npm install antd @types/antd
-import { Button, Input, Alert } from "antd";
-import { Form } from "antd/es/form";
+import { Button, Input, Alert, Form } from "antd";
 import { LockClosedIcon, UserIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 import { loginUser } from "@/services/api";
@@ -97,10 +96,10 @@ const LoginPage = () => {
             >
               <Form.Item
                 name="username"
+                label="用户名"
                 rules={[{ required: true, message: "请输入用户名" }]}
                 hasFeedback
               >
-                <Form.Item.Label>用户名</Form.Item.Label>
                 <Input
                   prefix={<UserIcon className="h-5 w-5 text-gray-400" />}
                   placeholder="请输入用户名"
@@ -110,10 +109,10 @@ const LoginPage = () => {
 
               <Form.Item
                 name="password"
+                label="密码"
                 rules={[{ required: true, message: "请输入密码" }]}
                 hasFeedback
               >
-                <Form.Item.Label>密码</Form.Item.Label>
                 <Input.Password
                   prefix={<LockClosedIcon className="h-5 w-5 text-gray-400" />}
                   placeholder="请输入密码"

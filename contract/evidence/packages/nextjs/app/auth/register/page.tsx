@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button, Input, Form, FormItem, FormLabel, FormControl, Alert } from "antd";
-import { Lock, User, Mail, ArrowRight } from "@heroicons/react/24/outline";
-import { registerUser } from "~~/services/api";
+import { Button, Input, Form, Alert } from "antd";
+import { LockClosedIcon, UserIcon, EnvelopeIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { registerUser } from "@/services/api";
 
 const RegisterPage = () => {
   const [form] = Form.useForm();
@@ -74,63 +74,62 @@ const RegisterPage = () => {
             layout="vertical"
             className="space-y-4"
           >
-            <FormItem
+            <Form.Item
               name="username"
+              label="用户名"
               rules={[
                 { required: true, message: "请输入用户名" },
                 { min: 3, message: "用户名长度不能少于3个字符" },
                 { max: 20, message: "用户名长度不能超过20个字符" }
               ]}
             >
-              <FormLabel>用户名</FormLabel>
-              <FormControl
-                prefix={<User className="h-5 w-5 text-gray-400" />}
+              <Input
+                prefix={<UserIcon className="h-5 w-5 text-gray-400" />}
                 placeholder="请输入用户名"
               />
-            </FormItem>
+            </Form.Item>
 
-            <FormItem
+            <Form.Item
               name="email"
+              label="邮箱"
               rules={[
                 { required: true, message: "请输入邮箱" },
                 { type: "email", message: "请输入有效的邮箱地址" }
               ]}
             >
-              <FormLabel>邮箱</FormLabel>
-              <FormControl
-                prefix={<Mail className="h-5 w-5 text-gray-400" />}
+              <Input
+                prefix={<EnvelopeIcon className="h-5 w-5 text-gray-400" />}
                 placeholder="请输入邮箱"
               />
-            </FormItem>
+            </Form.Item>
 
-            <FormItem
+            <Form.Item
               name="password"
+              label="密码"
               rules={[
                 { required: true, message: "请输入密码" },
                 { min: 6, message: "密码长度不能少于6个字符" },
                 { max: 20, message: "密码长度不能超过20个字符" }
               ]}
             >
-              <FormLabel>密码</FormLabel>
-              <FormControl
-                prefix={<Lock className="h-5 w-5 text-gray-400" />}
-                type="password"
+              <Input.Password
+                prefix={<LockClosedIcon className="h-5 w-5 text-gray-400" />}
                 placeholder="请输入密码"
               />
-            </FormItem>
+            </Form.Item>
 
-            <FormItem>
+            <Form.Item>
               <Button
                 type="primary"
                 htmlType="submit"
                 loading={loading}
                 className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg"
-                icon={<ArrowRight className="ml-2 h-4 w-4" />}
+                icon={<ArrowRightIcon className="ml-2 h-4 w-4" />}
                 size="large"
               >
                 注册
               </Button>
-            </FormItem>
+            </Form.Item>
           </Form>
 
           <div className="mt-6 text-center">
