@@ -20,6 +20,9 @@ This is a blockchain-based evidence management system built with Spring Boot (Ja
 - Repository: SQLite database access
 - Utils: JWT, Contract utilities
 
+**Fronted (Next.js):**
+- Located in `contract/evidence/packages/nextjs/`
+
 **Smart Contracts (Hardhat):**
 - Located in `contract/evidence/packages/hardhat/contracts/`
 - Web3j plugin generates Java wrappers

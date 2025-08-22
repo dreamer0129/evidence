@@ -48,8 +48,12 @@ export const loginUser = async (username: string, password: string) => {
       password,
     });
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Login API error:", error);
+    // 如果后端返回了具体的错误消息，直接抛出该消息
+    if (error.response?.data?.message) {
+      throw new Error(error.response.data.message);
+    }
     throw error;
   }
 };
@@ -69,8 +73,12 @@ export const registerUser = async (username: string, password: string, email: st
       email,
     });
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Register API error:", error);
+    // 如果后端返回了具体的错误消息，直接抛出该消息
+    if (error.response?.data?.message) {
+      throw new Error(error.response.data.message);
+    }
     throw error;
   }
 };

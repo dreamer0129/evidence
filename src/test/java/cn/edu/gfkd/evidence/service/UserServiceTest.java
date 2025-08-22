@@ -1,6 +1,7 @@
 package cn.edu.gfkd.evidence.service;
 
 import cn.edu.gfkd.evidence.domain.User;
+import cn.edu.gfkd.evidence.exception.DuplicateUserException;
 import cn.edu.gfkd.evidence.repository.UserRepository;
 import cn.edu.gfkd.evidence.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -77,11 +78,11 @@ class UserServiceTest {
         when(userRepository.existsByUsername(username)).thenReturn(true);
 
         // 调用服务方法并验证异常
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+        DuplicateUserException exception = assertThrows(DuplicateUserException.class, () -> {
             userService.registerUser(username, password, email);
         });
 
-        assertEquals("用户名已存在", exception.getMessage());
+        assertEquals("用户名 \"existinguser\" 已被注册，请使用其他用户名", exception.getMessage());
 
         // 验证Repository方法是否被调用
         verify(userRepository, times(1)).existsByUsername(username);
@@ -114,6 +115,30 @@ class UserServiceTest {
 
         // 验证Repository方法是否被调用
         verify(userRepository, times(1)).findByUsername(username);
+    }
+
+    @Test
+    void testRegisterUser_EmailExists() {
+        // 准备测试数据
+        String username = "newuser";
+        String password = "password123";
+        String email = "existing@example.com";
+
+        // 模拟Repository行为
+        when(userRepository.existsByUsername(username)).thenReturn(false);
+        when(userRepository.existsByEmail(email)).thenReturn(true);
+
+        // 调用服务方法并验证异常
+        DuplicateUserException exception = assertThrows(DuplicateUserException.class, () -> {
+            userService.registerUser(username, password, email);
+        });
+
+        assertEquals("邮箱 \"existing@example.com\" 已被注册，请使用其他邮箱或尝试找回密码", exception.getMessage());
+
+        // 验证Repository方法是否被调用
+        verify(userRepository, times(1)).existsByUsername(username);
+        verify(userRepository, times(1)).existsByEmail(email);
+        verify(userRepository, never()).save(any(User.class));
     }
 
     @Test

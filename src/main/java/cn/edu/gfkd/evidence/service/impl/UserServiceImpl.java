@@ -1,6 +1,7 @@
 package cn.edu.gfkd.evidence.service.impl;
 
 import cn.edu.gfkd.evidence.domain.User;
+import cn.edu.gfkd.evidence.exception.DuplicateUserException;
 import cn.edu.gfkd.evidence.repository.UserRepository;
 import cn.edu.gfkd.evidence.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +25,10 @@ public class UserServiceImpl implements UserService {
     public User registerUser(String username, String password, String email) {
         // 验证用户名和邮箱是否已存在
         if (isUsernameExists(username)) {
-            throw new RuntimeException("用户名已存在");
+            throw new DuplicateUserException("用户名 \"" + username + "\" 已被注册，请使用其他用户名");
         }
         if (isEmailExists(email)) {
-            throw new RuntimeException("邮箱已被注册");
+            throw new DuplicateUserException("邮箱 \"" + email + "\" 已被注册，请使用其他邮箱或尝试找回密码");
         }
 
         // 创建新用户
