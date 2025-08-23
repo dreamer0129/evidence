@@ -92,3 +92,4 @@ yarn hardhat:deploy
 - Maven for Java backend
 - Yarn workspaces for smart contracts
 - Web3j plugin for Solidity to Java code generation
+- The smart contract is Located in `@contract/evidence/packages/hardhat/`, the test and deploy script must run `yarn lint` to check and fix

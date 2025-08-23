@@ -193,7 +193,7 @@
 					<nativeJavaType>true</nativeJavaType>
 					<outputFormat>java</outputFormat>
 					<soliditySourceFiles>
-						<directory>src/main/contract/evidence/packages/hardhat/contracts</directory>
+						<directory>contract/evidence/packages/hardhat/contracts</directory>
 						<includes>
 							<include>**/*.sol</include>
 						</includes>

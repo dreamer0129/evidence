@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     Counter: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
       abi: [
         {
           inputs: [
@@ -68,10 +68,435 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deployedOnBlock: 3,
+      deployedOnBlock: 15,
+    },
+    EvidenceStorage: {
+      address: "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "evidenceId",
+              type: "bytes32",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bytes32",
+              name: "fileHash",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "fileName",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          name: "EvidenceStored",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "bytes32",
+              name: "evidenceId",
+              type: "bytes32",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "verifier",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          name: "EvidenceVerified",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "allEvidenceIds",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "evidenceCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          name: "evidences",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "id",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "string",
+              name: "fileName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "fileType",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "fileSize",
+              type: "uint256",
+            },
+            {
+              internalType: "bytes32",
+              name: "fileHash",
+              type: "bytes32",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "memo",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getAllEvidenceIds",
+          outputs: [
+            {
+              internalType: "bytes32[]",
+              name: "",
+              type: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "_fileHash",
+              type: "bytes32",
+            },
+          ],
+          name: "getEvidence",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "bytes32",
+                  name: "id",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "address",
+                  name: "owner",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "fileName",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "fileType",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "fileSize",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "fileHash",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "memo",
+                  type: "string",
+                },
+              ],
+              internalType: "struct EvidenceStorage.Evidence",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "_index",
+              type: "uint256",
+            },
+          ],
+          name: "getEvidenceByIndex",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "bytes32",
+                  name: "id",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "address",
+                  name: "owner",
+                  type: "address",
+                },
+                {
+                  internalType: "string",
+                  name: "fileName",
+                  type: "string",
+                },
+                {
+                  internalType: "string",
+                  name: "fileType",
+                  type: "string",
+                },
+                {
+                  internalType: "uint256",
+                  name: "fileSize",
+                  type: "uint256",
+                },
+                {
+                  internalType: "bytes32",
+                  name: "fileHash",
+                  type: "bytes32",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+                {
+                  internalType: "string",
+                  name: "memo",
+                  type: "string",
+                },
+              ],
+              internalType: "struct EvidenceStorage.Evidence",
+              name: "",
+              type: "tuple",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getEvidenceCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "_user",
+              type: "address",
+            },
+          ],
+          name: "getUserEvidences",
+          outputs: [
+            {
+              internalType: "bytes32[]",
+              name: "",
+              type: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "_fileHash",
+              type: "bytes32",
+            },
+            {
+              internalType: "string",
+              name: "_fileName",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_fileType",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_fileSize",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_memo",
+              type: "string",
+            },
+          ],
+          name: "storeEvidence",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          name: "userEvidences",
+          outputs: [
+            {
+              internalType: "bytes32",
+              name: "",
+              type: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "bytes32",
+              name: "_fileHash",
+              type: "bytes32",
+            },
+          ],
+          name: "verifyEvidence",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "isValid",
+              type: "bool",
+            },
+            {
+              internalType: "bytes32",
+              name: "evidenceId",
+              type: "bytes32",
+            },
+            {
+              internalType: "address",
+              name: "owner",
+              type: "address",
+            },
+            {
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+      deployedOnBlock: 17,
     },
     YourContract: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
       abi: [
         {
           inputs: [
@@ -212,7 +637,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deployedOnBlock: 1,
+      deployedOnBlock: 13,
     },
   },
 } as const;
